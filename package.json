@@ -1,0 +1,28 @@
+{
+  "name": "gdnsdctl-rest",
+  "version": "1.0.0",
+  "description": "REST API for gdnsd",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlemper/gdnsdctl-rest.git"
+  },
+  "keywords": [
+    "gdnsd"
+  ],
+  "author": "Daniel Lemper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dlemper/gdnsdctl-rest/issues"
+  },
+  "homepage": "https://github.com/dlemper/gdnsdctl-rest#readme",
+  "dependencies": {
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-res": "^3.1.1",
+    "koa-route": "^3.2.0"
+  }
+}
