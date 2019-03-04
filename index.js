@@ -66,8 +66,8 @@ app.use(route.put('/stop', async (ctx) => {
 
 const daemon = child.spawn('gdnsd', ['start']);
 
-daemon.stdout.on('data', (data) => console.log('gdnsd:', data));
-daemon.stderr.on('data', (data) => console.error('gdnsd:', data));
+daemon.stdout.on('data', (data) => console.log('gdnsd:', data.toString()));
+daemon.stderr.on('data', (data) => console.error('gdnsd:', data.toString()));
 
 daemon.on('close', (code) => process.exit(code));
 
