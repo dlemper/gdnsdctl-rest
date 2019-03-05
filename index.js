@@ -11,55 +11,54 @@ const gdnsdctl = (cmd, params = []) => exec(`gdnsdctl ${cmd} ${params.join(' ')}
 
 const app = new Koa();
 
-console.log(app);
-
 app.use(bodyParser());
 app.use(genres());
 
 app.use(route.get('/status', async (ctx) => {
-  const { stderr } = await exec('status');
+  const { stderr } = await gdnsdctl('status');
 
   return { status: stderr };
 }));
 
 app.use(route.get('/stats', async (ctx) => {
-  const { stdout } = await exec('stats');
+  const { stdout } = await gdnsdctl('stats');
+  console.log(stdout);
 
   return JSON.parse(stdout);
 }));
 
 app.use(route.get('/states', async (ctx) => {
-  const { stdout } = await exec('states');
+  const { stdout } = await gdnsdctl('states');
 
   return JSON.parse(stdout);
 }));
 
 app.use(route.post('/acme-dns-01', async (ctx) => {
-  const { stderr } = await exec('acme-dns-01', ctx.body);
+  const { stderr } = await gdnsdctl('acme-dns-01', ctx.body);
 
   return { status: stderr };
 }));
 
 app.use(route.delete('/acme-dns-01-flush', async (ctx) => {
-  const { stderr } = await exec('acme-dns-01-flush');
+  const { stderr } = await gdnsdctl('acme-dns-01-flush');
 
   return { status: stderr };
 }));
 
 app.use(route.put('/replace', async (ctx) => {
-  const { stderr } = await exec('replace');
+  const { stderr } = await gdnsdctl('replace');
 
   return { status: stderr };
 }));
 
 app.use(route.put('/reload-zones', async (ctx) => {
-  const { stderr } = await exec('reload-zones');
+  const { stderr } = await gdnsdctl('reload-zones');
 
   return { status: stderr };
 }));
 
 app.use(route.put('/stop', async (ctx) => {
-  const { stderr } = await exec('stop');
+  const { stderr } = await gdnsdctl('stop');
 
   return { status: stderr };
 }));
