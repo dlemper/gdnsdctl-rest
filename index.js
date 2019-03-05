@@ -17,50 +17,49 @@ app.use(genres());
 app.use(route.get('/status', async (ctx) => {
   const { stderr } = await gdnsdctl('status');
 
-  return { status: stderr };
+  ctx.body = { status: stderr };
 }));
 
 app.use(route.get('/stats', async (ctx) => {
   const { stdout } = await gdnsdctl('stats');
-  console.log(stdout);
 
-  return JSON.parse(stdout);
+  ctx.body = JSON.parse(stdout);
 }));
 
 app.use(route.get('/states', async (ctx) => {
   const { stdout } = await gdnsdctl('states');
 
-  return JSON.parse(stdout);
+  ctx.body = JSON.parse(stdout);
 }));
 
 app.use(route.post('/acme-dns-01', async (ctx) => {
   const { stderr } = await gdnsdctl('acme-dns-01', ctx.body);
 
-  return { status: stderr };
+  ctx.body = { status: stderr };
 }));
 
 app.use(route.delete('/acme-dns-01-flush', async (ctx) => {
   const { stderr } = await gdnsdctl('acme-dns-01-flush');
 
-  return { status: stderr };
+  ctx.body = { status: stderr };
 }));
 
 app.use(route.put('/replace', async (ctx) => {
   const { stderr } = await gdnsdctl('replace');
 
-  return { status: stderr };
+  ctx.body = { status: stderr };
 }));
 
 app.use(route.put('/reload-zones', async (ctx) => {
   const { stderr } = await gdnsdctl('reload-zones');
 
-  return { status: stderr };
+  ctx.body = { status: stderr };
 }));
 
 app.use(route.put('/stop', async (ctx) => {
   const { stderr } = await gdnsdctl('stop');
 
-  return { status: stderr };
+  ctx.body = { status: stderr };
 }));
 
 const daemon = child.spawn('gdnsd', ['start']);
