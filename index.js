@@ -33,7 +33,7 @@ app.use(route.get('/states', async (ctx) => {
 }));
 
 app.use(route.post('/acme-dns-01', async (ctx) => {
-  const { stderr } = await gdnsdctl('acme-dns-01', ctx.body);
+  const { stderr } = await gdnsdctl('acme-dns-01', ctx.request.body);
 
   ctx.body = { status: stderr };
 }));
