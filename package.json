@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/dlemper/gdnsdctl-rest#readme",
   "dependencies": {
+    "dns-zonefile": "^0.2.6",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-res": "^3.1.1",
